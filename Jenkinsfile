@@ -41,7 +41,11 @@ pipeline {
         stage('Docker BnP') {
          steps {
           container('kaniko') {
-           sh '''/kaniko/executor --verbosity debug -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/oskarq/devsecops-demo:latest'''
+           sh '''
+           /kaniko/executor --dockerfile `pwd`/Dockerfile \
+            -context `pwd` \
+            --destination=oskarq/devsecops-demo:latest
+           '''
           }           
          }
         }
