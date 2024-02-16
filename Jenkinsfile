@@ -41,11 +41,13 @@ pipeline {
         stage('Docker BnP') {
          steps {
           container('kaniko') {
-           sh '''
-           /kaniko/executor --dockerfile `pwd`/Dockerfile \
-            -context `pwd` \
-            --destination=oskarq/devsecops-demo:latest
-           '''
+            script {
+              sh '''
+              /kaniko/executor --dockerfile `pwd`/Dockerfile \
+                --context `pwd` \
+                --destination=oskarq/devsecops-demo:latest
+              '''
+            }
           }           
          }
         }
