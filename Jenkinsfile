@@ -72,7 +72,6 @@ pipeline {
             true
           }
         }
-      }
     }
     stage('Package') {
       parallel {
