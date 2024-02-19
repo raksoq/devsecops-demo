@@ -98,6 +98,23 @@ pipeline {
         }
       }
     }
+    stage('Image Analysis') {
+      parallel {
+        stage('Image Linting') {
+          steps {
+            container('docker-tools') {
+            sh 'dockle docker.io/oskarq/devsecops-demo:latest'
+            }
+          }
+        }
+        stage('Image Scan') {
+          steps {
+            container('docker-tools') {
+            sh 'trivy image --exit-code 1 oskarq/devsecops-demo:latest'
+            }
+          }
+        }
+    }
 
     stage('Deploy to Dev') {
       steps {
