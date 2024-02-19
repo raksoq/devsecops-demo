@@ -31,7 +31,7 @@ pipeline {
           steps {
             container('licensefinder') {
               sh 'ls -al'
-              sh "stoped working after change sin section 6 done"
+              sh "echo 'stopped working after changes in section 6 done'"
               // sh '''#!/bin/bash --login
               //       /bin/bash --login
               //       rvm use default
