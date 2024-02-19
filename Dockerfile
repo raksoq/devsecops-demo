@@ -1,9 +1,9 @@
-FROM maven:3.8.2-openjdk-17 AS build
+FROM maven:3.8.7-openjdk-18-slim AS build
 WORKDIR /app
 COPY . .
 RUN mvn package -DskipTests
 
-FROM openjdk:18-alpine AS run
+FROM openjdk:23-slim-bullseye AS run
 COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar /run/demo.jar
 
 ARG USER=devops
