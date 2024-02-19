@@ -27,6 +27,7 @@ spec:
       image: rmkanda/trufflehog
       command:
         - cat
+        - which
       tty: true
     - name: licensefinder
       image: licensefinder/license_finder
