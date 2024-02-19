@@ -6,11 +6,11 @@
     :versions: []
     :when: 2020-05-31 15:26:41.128239000 Z
 - - :permit
-  - Apache 2.0
+  - Apache 2.17.1
   - :who: 
     :why: 
     :versions: []
-    :when: 2020-05-31 15:26:45.261798000 Z
+    :when: 2024-02-19
 - - :permit
   - BSD
   - :who: 
@@ -40,8 +40,8 @@
   - :who: 
     :why: 
     :versions:
-    - 1.2.3
-    :when: 2020-05-31 15:28:30.302764000 Z
+    - 1.2.13
+    :when: 2024-02-19
 - - :approve
   - logback-classic
   - :who: 
