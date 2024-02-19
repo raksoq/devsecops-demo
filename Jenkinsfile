@@ -56,8 +56,8 @@ pipeline {
               // dependencyCheckPublisher pattern: 'report.xml'
             }
           }
+       }
       }
-
     }
     stage('SAST') {
         steps {
