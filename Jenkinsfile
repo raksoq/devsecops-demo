@@ -30,14 +30,12 @@ pipeline {
         stage('OSS License Checker') {
           steps {
             container('licensefinder') {
-              sh '''
-              # Set the PATH correctly for RVM
-              export PATH="/usr/share/rvm/gems/ruby-3.1.1/bin:$PATH"
-              # Ensure using the correct Ruby version
-              rvm use ruby-3.1.1
-              # Install and run license_finder
-              gem install license_finder
-              license_finder
+              sh 'ls -al'
+              sh '''#!/bin/bash --login
+                    /bin/bash --login
+                    rvm use default
+                    gem install license_finder
+                    license_finder
               '''
             }
           }
