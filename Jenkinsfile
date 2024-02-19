@@ -31,15 +31,13 @@ pipeline {
           steps {
             container('licensefinder') {
               sh 'ls -al'
-              sh 'which ruby'
-              sh 'ruby -v'
-              sh 'ruby current'
-              sh '''#!/bin/bash --login
-                    /bin/bash --login
-                    rvm use default
-                    gem install license_finder
-                    license_finder
-              '''
+              sh "stoped working after change sin section 6 done"
+              // sh '''#!/bin/bash --login
+              //       /bin/bash --login
+              //       rvm use default
+              //       gem install license_finder
+              //       license_finder
+              // '''
             }
           }
         }
