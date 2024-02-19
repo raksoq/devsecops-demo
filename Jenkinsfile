@@ -31,6 +31,9 @@ pipeline {
           steps {
             container('licensefinder') {
               sh 'ls -al'
+              sh 'which ruby'
+              sh 'ruby -v'
+              sh 'ruby current'
               sh '''#!/bin/bash --login
                     /bin/bash --login
                     rvm use default
