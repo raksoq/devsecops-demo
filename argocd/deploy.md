@@ -1,4 +1,7 @@
 
+
+## Argo CD user setup
+
 ### initial deployment yaml
 ```bash
 kubectl create deployment devsecops-demo \
@@ -36,6 +39,15 @@ kubectl describe cm -n argocd argocd-rbac-cm
 argocd account generate-token --account jenkins
 
 #sync
-argocd app sync dso-demo --insecure --server
-35.202.161.131:32100 --auth-token XXXXXX
+argocd app sync devsecops-demo --insecure --server 35.202.161.131:32100 --auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJqZW5raW5zOmFwaUtleSIsIm5iZiI6MTcwODQzMDA0NSwiaWF0IjoxNzA4NDMwMDQ1LCJqdGkiOiIyMDYwZDJkZC1iNGQ5LTRjZWEtOTk5Yi03MTc4YTEyOTgyY2YifQ.1CRD-LqXzg0fAnAtH50RwxxsYm5Jq0pqiyu6nE6qxFM
+```
+
+## Argo CD CLI image
+```bash
+docker build -t oskarq/argocd-cli:2.10.1 . --push
+
+docker buildx create --name mybuilder --use
+docker buildx inspect --bootstrap
+docker buildx build --platform linux/amd64,linux/arm64 -t oskarq/argocd-cli:1.10.1 --push .
+
 ```
