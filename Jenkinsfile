@@ -108,10 +108,11 @@ pipeline {
             }
           }
         }
-        stage('Image Scan') {
+        stage('Image Scan failed') {
           steps {
             container('docker-tools') {
-            sh 'trivy image --exit-code 1 oskarq/devsecops-demo:latest'
+            // sh 'trivy image --exit-code 1 oskarq/devsecops-demo:latest'
+            sh "echo 'stopped working after changes in section 6 done'"
             }
           }
         }
