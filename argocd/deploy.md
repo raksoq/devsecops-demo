@@ -17,17 +17,23 @@ devsecops-demo --tcp=8080 \
 --dry-run -o yaml | tee deploy/service.yaml
 ```
 
-### add user jenkins to argocd
+### setup user for argocd
+
+
 ```bash
-#patch
-kubectl patch cm -n argocd argocd-rbac-cm --patch-file argocd_user_rbac-patch.yaml
+#user
+kubectl patch cm -n argocd argocd-cm --patch-file \
+argocd_create_user-patch.yaml
+
+#rbac
+kubectl patch cm -n argocd argocd-rbac-cm \
+--patch-file argocd_user_rbac-patch.yaml
 
 #validate
 kubectl describe cm -n argocd argocd-rbac-cm
 
 #token
 argocd account generate-token --account jenkins
-
 
 #sync
 argocd app sync dso-demo --insecure --server
