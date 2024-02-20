@@ -16,3 +16,20 @@ devsecops-demo --tcp=8080 \
 --node-port=30080 \
 --dry-run -o yaml | tee deploy/service.yaml
 ```
+
+### add user jenkins to argocd
+```bash
+#patch
+kubectl patch cm -n argocd argocd-rbac-cm --patch-file argocd_user_rbac-patch.yaml
+
+#validate
+kubectl describe cm -n argocd argocd-rbac-cm
+
+#token
+argocd account generate-token --account jenkins
+
+
+#sync
+argocd app sync dso-demo --insecure --server
+35.202.161.131:32100 --auth-token XXXXXX
+```
