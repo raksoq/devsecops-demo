@@ -16,10 +16,14 @@ spec:
       creationTimestamp: null
       labels:
         app: devsecops-demo
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'devsecops-demo'
+        vault.hashicorp.com/agent-inject-secret-database: 'secret/devsecops-demo/database' 
     spec:
+      serviceAccountName: devsecops-demo
       containers:
       - image: oskarq/devsecops-demo
         name: devsecops-demo
         ports:
         - containerPort: 8080
-        resources: {}
